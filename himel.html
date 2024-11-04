@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Anonymous Message Here</title> <!-- Change this to your desired anonymous message -->
+    <style>
+        body {
+            background: linear-gradient(to right, #ffafbd, #ffc3a0); /* Aesthetic gradient background */
+            text-align: center; /* Center text */
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun font style */
+            height: 100vh; /* Full height */
+            display: flex; /* Flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            flex-direction: column; /* Column layout */
+            overflow: hidden; /* Prevent scrolling */
+        }
+        h1 {
+            color: white; /* Heading color */
+            font-size: 48px; /* Heading size */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+        }
+        button {
+            padding: 10px 20px; /* Button padding */
+            margin: 10px; /* Button margin */
+            font-size: 20px; /* Button font size */
+            cursor: pointer; /* Pointer on hover */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+        }
+        #yesButton {
+            background-color: #4CAF50; /* Green background for Yes */
+            color: white; /* Text color */
+        }
+        #noButton {
+            background-color: #f44336; /* Red background for No */
+            color: white; /* Text color */
+        }
+    </style>
+</head>
+<body>
+    <h1>I Love You ❤️</h1>
+    <p>Do you love me? 😍</p>
+    <button id="yesButton" onclick="showResult()">Yes 👍</button>
+    <button id="noButton" onclick="moveButton()">No 👎</button>
+
+    <p id="result" style="font-size: 24px; margin-top: 20px; color: white;"></p>
+
+    <script>
+        let noButtonClickCount = 0;
+
+        function showResult() {
+            const resultText = document.getElementById('result');
+            if (noButtonClickCount >= 10) {
+                resultText.innerText = 'Hooray! You pressed Yes! I love you more! ❤️';
+            } else {
+                resultText.innerText = 'Yes, I knew it! 🎉';
+            }
+        }
+
+        function moveButton() {
+            const noButton = document.getElementById('noButton');
+            noButtonClickCount++;
+
+            if (noButtonClickCount < 10) {
+                // Move the button to a random position within the window
+                noButton.style.position = 'absolute';
+                noButton.style.top = Math.random() * (window.innerHeight - noButton.offsetHeight) + 'px';
+                noButton.style.left = Math.random() * (window.innerWidth - noButton.offsetWidth) + 'px';
+            } else {
+                // After ten clicks, change the button's text and color
+                noButton.style.position = 'static'; // Keep it in the same place
+                noButton.innerText = 'Please say Yes! 💕'; // Change text to "Please say Yes!"
+                noButton.style.backgroundColor = '#ff9800'; // Change color to orange
+            }
+        }
+    </script>
+</body>
+</html>
